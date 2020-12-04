@@ -1,0 +1,95 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Mono", monospace;
+}
+
+body {
+    background: #76b852;
+    background: -webkit-linear-gradient(right, #52b8a2, #6fa8c2);
+    background: -moz-linear-gradient(right, #52b8a2, #6fa8c2);
+    background: -o-linear-gradient(right, #52b8a2, #6fa8c2);
+    background: linear-gradient(to left, #52b8a2, #6fa8c2);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body .navbar {
+    background: #111010;
+    height: 10vh;
+    border-bottom: solid 6px #698ff7;
+}
+
+body .navbar a {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    color: white;
+    font-size: 40px;
+}
+
+body .login-container {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+body .login-container .form-container {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+body .login-container .form-container input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+body .login-container .form-container button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+body .login-container .form-container button:hover,
+body .login-container .form-container button:active,
+body .login-container .form-container button:focus {
+    background: #43A047;
+}
+
+body .login-container .form-container .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+body .login-container .form-container .message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
