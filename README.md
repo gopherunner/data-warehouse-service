@@ -73,4 +73,10 @@ This is the last project of the Full Stack Developer course at Acamica.
     ```sh
     data-warehouse-service/frontend/index.html
     ```
- 
+    The Admin credentials:
+    
+    ```sh
+    email:     admin@admin.com
+    password:  admin
+    ```
+    
