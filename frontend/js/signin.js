@@ -28,13 +28,21 @@ signInBtn.addEventListener("click", (event) => {
             if (response.status == 200 || response.status == 201) {
                 response.json().then((result) => {
                     let token = result.token;
-                    console.log("[DEBUG] => Token: " + token);
-                    sessionStorage.setItem("token", token);
+                    if (token !== undefined) {
+                        console.log("[DEBUG] => Token: " + token);
+                        sessionStorage.setItem("token", token);
+                        location.href = "home.html";
+                    } else {
+                        notification.innerHTML = "Email or password is not valid!";
+                        emailInput.value = '';
+                        passwordInput.value = '';
+                    }
                 });
-                location.href = "home.html";
             } else {
                 notification.innerHTML = "Email or password is not valid!";
                 console.log("[ERROR] error: " + response.json());
+                emailInput.value = '';
+                passwordInput.value = '';
             }
         });
 });
