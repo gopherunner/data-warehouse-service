@@ -1,60 +1,32 @@
-const Sequelize = require('sequelize');
-const db = require('../db/connection');
+const { Schema, model } = require('mongoose');
 
-const User = db.sequelize.define('users', {
-        user_id: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        first_name: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: {
-                    args: true,
-                    msg: "The first name can't be empty",
-                },
-            },
-        },
-        last_name: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: {
-                    args: true,
-                    msg: "The last name can't be empty",
-                },
-            },
-        },
-        email: {
-            type: Sequelize.STRING,
-            unique: true,
-            allowNull: false,
-            validate: {
-                isEmail: {
-                    args: true,
-                    msg: "Enter a valid email",
-                },
-            },
-        },
-        is_admin: {
-            type: Sequelize.BOOLEAN,
-            defaultValue: false,
-            allowNull: false,
-        },
-        password: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: {
-                    args: true,
-                    msg: "The password can't be empty",
-                },
-            },
-        },
+const userSchema = new Schema({
+    firstname: {
+        type: String,
+        required: true
     },
-);
+    lastname: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    profile: {
+        type: String,
+        enum: ['admin','user'],
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
+    }
+});
 
-module.exports = { Sequelize, User };
+module.exports = model('User', userSchema);
