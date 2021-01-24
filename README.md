@@ -1,8 +1,24 @@
-# MKT Data Warehouse Service
+# Marketing DataWarehouse Service
 
-This is the last project of the Full Stack Developer course at Acamica.
+This is the final project of the **Full Stack Developer** track course at Acamica (https://www.acamica.com). It's a service that allows a Marketing company to manage all the contacts of its clients for its campaigns.
+
+The project was coded with the following technologies:
+
+- HTML5
+- CSS
+- JS
+- NodeJS
+- Express
+- ODM (Mongoose)
+
 
 # Procedure
+
+### Requirements
+
+1. Install and Configure MongoDB (it will vary between OS)
+
+2. Install NodeJS
 
 ### Installation
 
@@ -15,68 +31,39 @@ This is the last project of the Full Stack Developer course at Acamica.
     cd data-warehouse-service/backend/
     npm install
     ```
-### Install & configure the MySQL (MariaDB) database (in this example I did it for MacOS)
 
-1. Install MariaDB with Brew:
-    ```sh
-    brew update
-    brew install mariadb
-    ```
+### Configuration
 
-2. After a successful installation, we can start the server and also ensure it autostarts in the future:
-    ```sh
-    brew services start mariadb
-    ```
-
-3. You should get some feedback from the last command like:
-    ```sh
-    ==> Successfully started `mariadb` (label: ...)
-    ```
-
-4. You must change the root password and secure your installation:
-    ```sh
-    sudo /usr/local/bin/mysql_secure_installation
-    ```
-
-5. Create an **.env** file on the root of the project with the following configuration:
+1. Create an **.env** file inside the **backend** folder with the following configuration:
     ```sh
     APP_PORT=3000
     APP_SECRET=s3cr3t
-    DB_HOST=localhost
-    DB_USER=root
-    DB_PASS=<password set for mariadb>
-    DB_NAME=data_warehouse
-    DB_PORT=3306
+    DB_URI=mongodb://localhost:27017/warehouse
+    ADMIN_PASS=w4r3h0us3
     ```
-6. Import the Mkt Data Warehouse Service Database schemas into the DB:
-    ```sh
-    cd data-warehouse-service/backend/db
-    $ mysql -u root -p#### -h localhost < warehouse.sql
-    ```
-    NOTE: replace the #### with the password you set for the db
 
-7. Start the Warehouse Backend REST API
+2. Start the Backend REST API
 
     ```sh
-    cd data-warehouse-service/backend/
-    $ npm start
+    cd data-warehouse/backend
+    # npm start
     ```
     
-    Check that the REST API is working
+    Check that the Backend REST API is working
     ```sh
-    [INFO] Connecting to the Database (data_warehouse) on port 3306...
-    [INFO] Connection established!
-    [INFO] Starting DataWarehouse Mkt API Server, listening on port 3000
+    [INFO] Connecting to the Database...
+    [INFO] Database connected to mongodb://localhost:27017/warehouse
+    [INFO] Starting Datawarehouse Mkt API Server, listening on port 3000
     ```
-8. Open the Warehouse Frontend App located in
+    
+3. Once the Backend service is running you could move forward and open the Warehouse Frontend App located at:
 
-    ```sh
-    data-warehouse-service/frontend/index.html
-    ```
-    The Admin credentials:
-    
-    ```sh
-    email:     admin@admin.com
-    password:  admin
-    ```
-    
+   ```sh
+   data-warehouse-service/frontend/index.html
+   ```
+   The system is preloaded with (1) Admin user, with the following credentials:
+   
+   ```sh
+   email:       admin@datawarehouse.com
+   password:    w4r3h0us3
+   ```
