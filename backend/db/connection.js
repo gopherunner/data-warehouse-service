@@ -1,40 +1,14 @@
-const { Sequelize } = require('sequelize');
-const { database } = require('../db/db');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
-const port = database.port;
-const db = database.db;
+const dbURI = process.env.DB_URI;
 
-const sequelize = new Sequelize(
-    database.db,
-    database.username,
-    database.password,
-    {
-        host: database.host,
-        port: database.port,
-        dialect: 'mysql',
-        logging: false,
-        define: {
-            timestamps: false
-        }
-    },
-);
+mongoose.connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+});
 
-const init = async () => {
-    return sequelize.authenticate();
-};
+const db = mongoose.connection;
 
-const query = async (q) => {
-  try {
-      const [rows] = await sequelize.query(q,
-          {
-              raw: true,
-              plain: false,
-              logging: console.log
-          });
-      return rows;
-  } catch (error) {
-      return Promise.reject(error);
-  }
-}
-
-module.exports = {init, query, sequelize, Sequelize, db, port};
+module.exports = { db: db, dbURI: dbURI}
