@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto Mono", monospace;
+}
+
+:root {
+    --signout-btn-bg-color: #5E94D1;
+    --nav-bg-color: #0561BA;
+    --main-btn-bg-color: #0561BA;
+    --main-btn-hover-bg-color: #5E94D1;
+    --white: #FFF;
+    --row-selected-color: #E6F2FE;
+}
+
+body main {
+    background-color: #FFFFFF;
+    height: 90vh;
+    padding-top: 25px; 
+}
+
+/* Navbar */
+.nav-container {
+    width: 100%;
+    background-color: var(--nav-bg-color);
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: 0.2fr auto 1fr;
+    align-items: center;
+    height: 70px;
+    width: 90%;
+    max-width: 1720px;
+    margin: 0 auto;
+}
+
+#navbar-logo {
+    color: var(--white);
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    list-style: none;
+    text-align: center;
+    width: 70%;
+    justify-self: end;
+}
+
+.nav-links {
+    color: white;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+.nav-links:hover {
+    color: var(--signout-btn-bg-color);
+    transition: all 0.2s ease-out;
+}
+
+.nav-links-btn {
+    background-color: var(--signout-btn-bg-color);
+    padding: 6px 16px;
+    border-radius: 4px;
+}
+
+.nav-links-btn:hover {
+    background-color: transparent;
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 4px;
+    border: 1px solid var(--signout-btn-bg-color);
+    transition: all 0.3s ease-out;
+}
+.menu-toggle {
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--white);
+}
+
+/* Company Search Panel */
+body main .company-panel {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 95vw;
+}
+
+body main .company-panel .input-group {
+    width: 30vw;
+}
+
+body main .company-panel .input-group input {
+    border: solid 1px var(--main-btn-bg-color);
+}
+
+body main .company-panel .input-group input:focus {
+    border: solid 1px var(--main-btn-bg-color);
+}
+
+body main .company-panel .input-group button {
+    background-color: var(--main-btn-bg-color);
+    border: solid 1px var(--main-btn-bg-color);
+    border-left: none;
+    height: 38px;
+}
+
+body main .company-panel .input-group button:hover {
+    background-color: var(--main-btn-hover-bg-color);
+    border: solid 1px var(--main-btn-hover-bg-color);
+}
+
+body main .company-panel .input-group button .fa-search {
+    color: white;
+}
+
+body main .company-panel #createCompany {
+    color: white;
+    background-color: var(--main-btn-bg-color);
+    border: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 30vw;
+    height: 40px;
+    text-transform: none;
+}
+
+body main .company-panel #createCompany:hover {
+    color: white;
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+/* Companies container */
+body main .companies-container {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    height: 80vh;
+    padding-top: 3vh;
+}
+
+/* Companies Table Wrapper */
+body main .companies-container .table-wrapper {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    width: 95vw;
+    height: 40px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    font-weight: 500;
+}
+
+body main .companies-container .table-wrapper .field {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    cursor: default;
+}
+
+body main .companies-container .table-wrapper .field .fa-sort {
+    cursor: pointer;
+    transition: .2s;
+    -webkit-transition: .2s;
+}
+
+body main .companies-container .companies-table {
+    padding: 3px 3px 10px 3px;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-top: 1px solid rgba(0,0,0,0.10);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: white;
+    width: 95vw;
+    max-height: 67vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-padding: 50px 0 0 50px; 
+}
+
+body main .companies-container .companies-table::-webkit-scrollbar {
+    width: 7px;
+}
+
+body main .companies-container .companies-table::-webkit-scrollbar-thumb {
+    background-color: #247BA0;
+    border-radius: 2px;
+}
+
+body main .companies-container .companies-table .company-row {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    min-height: 40px;
+    width: 95vw;
+    background-color: white;
+    border-bottom: 1px solid #c4c0c0;
+    border-radius: unset;
+    margin-left: -5px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+body main .companies-container .companies-table .company-row:hover {
+    background-color: var(--row-selected-color);
+    cursor: pointer;
+}
+
+body main .companies-container .companies-table .company-row .company-edit {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    cursor: pointer;
+}
+
+body main .companies-container .companies-table .company-row .company-edit i {
+    font-size: 20px;
+    color: var(--main-btn-bg-color);
+    margin: 10px;
+}
+
+body main .companies-container .companies-table .company-row .company-edit i:hover {
+    color: var(--main-btn-hover-bg-color);
+}
+
+body main .companies-container .companies-table .company-row .company-info {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    cursor: default;
+}
+
+body main .companies-container .companies-table .company-row .company-info:nth-child(2),
+body main .companies-container .companies-table .company-row .company-info:nth-child(3) {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: unset;
+    -ms-flex-pack: unset;
+    justify-content: unset;
+    -ms-flex-item-align: center;
+    align-self: center;
+    margin: 0;
+}
+
+body main .companies-container .companies-table .company-row .company-info:nth-child(5) {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+/* Company Model */
+body main .company-modal {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0vh 3vh;
+    border: solid 1px var(--main-btn-bg-color);
+    border-radius: 2px;
+    background-color: white;
+    width: 25vw;
+    height: auto;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 11vh;
+    z-index: 10;
+}
+
+body main .company-modal .title-close {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+body main .company-modal .title-close h4 {
+    font-weight: 400;
+    color: var(--darkgrey);
+    margin-left: 10px;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+body main .company-modal .title-close .close-btn {
+    font-size: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Company modal form */
+body main .company-modal .company-form {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 95%;
+}
+
+body main .company-modal .company-form label {
+    font-weight: 500;
+}
+
+body main .company-modal .company-form input {
+    border: solid 1px var(--main-btn-bg-color);
+}
+
+body main .company-modal .company-form select {
+    border: solid 1px var(--main-btn-bg-color);
+}
+
+body main .company-modal .company-form .errors-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+body main .company-modal .company-form .errors-container small {
+    color: red;
+    font-weight: 400;
+}
+
+body main .company-modal .company-form #btn-submit {
+    color: white;
+    background-color: var(--main-btn-bg-color);
+    border: none;
+    font-weight: 500;
+    width: 21vw;
+    height: 3.5vw;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+body main .company-modal .company-form #btn-submit:hover {
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+/* Update Modal */
+body main #updateModal .modal-header {
+    background-color: var(--main-btn-bg-color);
+    color: var(--white);
+}
+
+body main #updateModal .modal-content .modal-footer .close-btn {
+    background-color: var(--main-btn-bg-color);
+    color: var(--white);
+    border: none;
+    font-weight: 400;
+    text-transform: none;
+}
+
+body main #updateModal .modal-content .modal-footer .close-btn:hover {
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+body main #updateModal .modal-content .modal-footer .update-btn {
+    background-color: var(--main-btn-bg-color);
+    color: var(--white);
+    border: none;
+    font-weight: 400;
+    text-transform: none;
+}
+
+body main #updateModal .modal-content .modal-footer .update-btn:hover {
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+body main #updateModal .modal-body select {
+    border: solid 1.5px #247BA0;
+    color: #111010;
+}
+
+body main #updateModal .modal-footer {
+    background-color: var(--white);
+}
+
+body main #updateModal .modal-footer .update-btn {
+    background-color: #111010;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-container {
+        position: relative;
+    }
+    .nav-menu {
+        display: grid;
+        grid-template-columns: auto;
+        background: var(--signout-btn-bg-color);
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        top: 80px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    #navbar-logo {
+        margin-left: 20px;
+    }
+
+    .nav-menu.active {
+        background-color: var(--main-btn-bg-color);
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .nav-links {
+        text-align: center;
+        line-height: 60px;
+        width: 100%;
+        display: table;
+    }
+    .nav-links:hover {
+        background-color: var(--signout-btn-bg-color);
+        color: var(--white);
+        transition: all 0.4s ease-out;
+    }
+    .navbar {
+        width: 100%;
+    }
+    .nav-links-btn {
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background-color: var(--main-btn-bg-color);
+        color: var(--white);
+        transition: all 0.4s ease-out;
+    }
+    .nav-links-btn:hover {
+        background-color: var(--signout-btn-bg-color);
+    }
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+    .menu-toggle .bar{
+        display: block;
+    }
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
