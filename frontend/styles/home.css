@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -6,292 +8,681 @@
     font-family: "Roboto Mono", monospace;
 }
 
-body {
-    background-color: #C2E812;
+:root {
+    --darkgray: #212329;
+    --lightgray: rgb(39, 39, 39);
+    --signout-btn-bg-color: #5E94D1;
+    --nav-bg-color: #0561BA;
+    --main-btn-bg-color: #0561BA;
+    --main-btn-hover-bg-color: #5E94D1;
+    --white: #FFF;
+    --selected-color: rgb(250, 170, 170);
+    --channel-bg-color: #E6F2FE;
+    --row-selected-color: #E6F2FE;
+    --channel-color: #53A2FB;
+    --small-text-color: rgb(148, 146, 146);
+    --selected-contacts-btn: #E6F2FE;
+    --selected-contacts-color: #72B5FB;
 }
 
-body .navbar {
-    display: flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    align-content: center;
-    -ms-flex-line-pack: center;
-    height: 10vh;
-    background: #111010;
-    border-bottom: solid 5px #247BA0;   
+body main {
+    background-color: #FFFFFF;
+    height: 90vh;
+    padding-top: 25px; 
 }
 
-body .navbar .burger {
-    display: none;
+/* Navbar */
+.nav-container {
+    width: 100%;
+    background-color: var(--nav-bg-color);
 }
 
-body .navbar .navbar-brand {
-    color: white;
-    font-size: 40px;
-}
-
-body .navbar #welcome-home {
-    color: #C2E812;
-    margin-top: 2.5vh;
-}
-
-body .navbar .nav-right {
-    display: flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
+.navbar {
+    display: grid;
+    grid-template-columns: 0.2fr auto 1fr;
     align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
+    height: 70px;
+    width: 90%;
+    max-width: 1720px;
+    margin: 0 auto;
 }
 
-body .navbar .nav-right .nav-ul {
-    display: flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    justify-content: space-between;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    width: 50vw;
-    margin-top: 2.5vh;
-    margin-right: 4vw;
+#navbar-logo {
+    color: var(--white);
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
     list-style: none;
+    text-align: center;
+    width: 70%;
+    justify-self: end;
 }
 
-body .navbar .nav-right .nav-ul a {
-    text-decoration: none;
+.nav-links {
     color: white;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+}
+.nav-links:hover {
+    color: var(--signout-btn-bg-color);
+    transition: all 0.2s ease-out;
 }
 
-body .navbar .nav-right .nav-ul a:hover {
-    color: #C2E812;
-    -webkit-transition: 0.25s ease-in;
-    transition: 0.25s ease-in;
+.nav-links-btn {
+    background-color: var(--signout-btn-bg-color);
+    padding: 6px 16px;
+    border-radius: 4px;
 }
 
-body .navbar .nav-right .btn {
-    color: #C2E812;
-    border: none;
-    background-color: #111010;
-    font-weight: 500;
-    text-transform: uppercase;
-    text-transform: none;
-    border: solid 1px #C2E812;
+.nav-links-btn:hover {
+    background-color: transparent;
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 4px;
+    border: 1px solid var(--signout-btn-bg-color);
+    transition: all 0.3s ease-out;
 }
-
-body .navbar .nav-right .btn:hover {
-    color: #C2E812;
-    background-color: #247BA0;
-}
-
-body .table-wrapper {
-    background: #fff;
-    padding: 20px 25px;
-    margin: 30px 0;
-	border-radius: 3px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-
-body .table-title {
-    padding-bottom: 15px;
-	background: #435d7d;
-	color: #fff;
-	padding: 16px 30px;
-	margin: -20px -25px 10px;
-	border-radius: 3px 3px 0 0;
-}
-
-body .table-title h2 {
-    margin: 5px 0 0;
-	font-size: 24px;
-}
-
-body .table-title .btn-group {
-    float: right;
-}
-
-body .table-title .btn {
-    color: #fff;
-	float: right;
-	font-size: 13px;
-	border: none;
-	min-width: 50px;
-	border-radius: 2px;
-	border: none;
-	outline: none !important;
-	margin-left: 10px;
-}
-
-body .table-title .btn i {
-    float: left;
-	font-size: 21px;
-	margin-right: 5px;
-}
-
-body .table-title .btn span {
-    float: left;
-	margin-top: 2px;
-}
-
-body .table-title table.table tr th,
-body .table-title table.table tr td {
-    border-color: #e9e9e9;
-	padding: 12px 15px;
-	vertical-align: middle;
-}
-
-body .table-title table.table tr th:first-child {
-    width: 60px;
-}
-
-body .table-title table.table tr th:last-child {
-    width: 100px;
-}
-
-body .table-title table.table-striped tbody tr:nth-of-type(odd) {
-    background-color: #fcfcfc;
-}
-
-body .table-title table.table-striped.table-hover tbody tr:hover {
-    background: #f5f5f5;
-}
-
-body .table-title table.table th i {
-    font-size: 13px;
-    margin: 0 5px;
+.menu-toggle {
     cursor: pointer;
 }
 
-body .table-title table.table td:last-child i {
-    opacity: 0.9;
-	font-size: 22px;
-    margin: 0 5px;
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--white);
 }
 
-body .table-title table.table td a {
-    font-weight: bold;
-	color: #566787;
-	display: inline-block;
-	text-decoration: none;
-	outline: none !important;
+/* Contact Search Panel */
+body main .contact-panel {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 95vw;
 }
 
-body .table-title table.table td a:hover {
-    color: #2196F3;
+body main .contact-panel .input-group {
+    width: 30vw;
 }
 
-body .table-title table.table td a.edit {
-    color: #FFC107;
+body main .contact-panel .input-group input {
+    border: solid 1px var(--main-btn-bg-color);
 }
 
-body .table-title table.table td a.delete {
-    color: #F44336;
+body main .contact-panel .input-group input:focus {
+    border: solid 1px var(--main-btn-bg-color);
 }
 
-body .table-title table.table td i {
-    font-size: 19px;
+body main .contact-panel .input-group button {
+    background-color: var(--main-btn-bg-color);
+    border: solid 1px var(--main-btn-bg-color);
+    border-left: none;
+    height: 38px;
 }
 
-body .table-title table.table .avatar {
-    border-radius: 50%;
-	vertical-align: middle;
-	margin-right: 10px;
+body main .contact-panel .input-group button:hover {
+    background-color: var(--main-btn-hover-bg-color);
+    border: solid 1px var(--main-btn-hover-bg-color);
 }
 
-body .table-title .custom-checkbox {
-    position: relative;
+body main .contact-panel .input-group button .fa-search {
+    color: white;
 }
 
-body .table-title .custom-checkbox input[type="checkbox"] {
-    opacity: 0;
-	position: absolute;
-	margin: 5px 0 0 3px;
-	z-index: 9;
+body main .contact-panel #createContact {
+    color: white;
+    background-color: var(--main-btn-bg-color);
+    border: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 30vw;
+    height: 40px;
+    text-transform: none;
 }
 
-body .table-title .custom-checkbox label:before {
+body main .contact-panel #createContact:hover {
+    color: white;
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+body main .selected-contacts-panel {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 95vw;
+    margin-top: 20px;
+}
+
+/* Selected Contacts */
+body main .selected-contacts-panel .selected-contacts {
+    text-align: center;
+    color: var(--selected-contacts-color);
+    background-color: var(--selected-contacts-btn);
+    width: 95px;
+    height: 24px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+body main .selected-contacts-panel p {
+    color: var(--main-btn-bg-color);
+}
+
+/* Contacts Container */
+body main .contacts-container {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    height: 80vh;
+    padding-top: 3vh;
+}
+
+/* Contacts Table Wrapper */
+body main .contacts-container .table-wrapper {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 35px repeat(7, 1fr);
+    grid-auto-rows: 40px;
+    width: 95vw;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+
+body main .contacts-container .table-wrapper .field {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    cursor: default;
+}
+
+body main .contacts-container .table-wrapper .field input[type=checkbox] {
+    cursor: pointer;
     width: 18px;
-	height: 18px;
+    height: 18px;
 }
 
-body .table-title .custom-checkbox label:before {
-    content: '';
-	margin-right: 10px;
-	display: inline-block;
-	vertical-align: text-top;
-	background: white;
-	border: 1px solid #bbb;
-	border-radius: 2px;
-	box-sizing: border-box;
-	z-index: 2;
+body main .contacts-container .table-wrapper .field .fa-sync-alt,
+body main .contacts-container .table-wrapper .field .fa-sort {
+    cursor: pointer;
+    -webkit-transition: .2s;
+    transition: .2s;
 }
 
-body .table-title .custom-checkbox input[type="checkbox"]:checked + label:after {
-    content: '';
-	position: absolute;
-	left: 6px;
-	top: 3px;
-	width: 6px;
-	height: 11px;
-	border: solid #000;
-	border-width: 0 3px 3px 0;
-	transform: inherit;
-	z-index: 3;
-	transform: rotateZ(45deg);
+
+body main .contacts-container .contacts-table {
+    padding: 3px 3px 10px 3px;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-top: 1px solid rgba(0,0,0,0.10);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: white;
+    width: 95vw;
+    max-height: 67vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-padding: 50px 0 0 50px; 
 }
 
-body .table-title .custom-checkbox input[type="checkbox"]:checked + label:before {
-    border-color: #03A9F4;
-	background: #03A9F4;
+body main .contacts-container .contacts-table::-webkit-scrollbar {
+    width: 7px;
 }
 
-body .table-title .custom-checkbox input[type="checkbox"]:checked + label:after {
-    border-color: #fff;
-}
-
-body .table-title .custom-checkbox input[type="checkbox"]:disabled + label:after {
-    color: #b8b8b8;
-	cursor: auto;
-	box-shadow: none;
-	background: #ddd;
-}
-
-/* Modal styles */
-body .modal .modal-dialog {
-    max-width: 400px;
-}
-
-body .modal .modal-header, .modal .modal-body, .modal .modal-footer {
-    padding: 20px 30px;
-}
-
-body .modal .modal-content {
-    border-radius: 3px;
-}
-
-body .modal .modal-footer {
-    background: #ecf0f1;
-	border-radius: 0 0 3px 3px;
-}
-
-body .modal .modal-title {
-    display: inline-block;
-}
-
-body .modal .form-control {
+body main .contacts-container .contacts-table::-webkit-scrollbar-thumb {
+    background-color: #247BA0;
     border-radius: 2px;
-	box-shadow: none;
-	border-color: #dddddd;
 }
 
-body .modal textarea.form-control {
-    resize: vertical;
+body main .contacts-container .contacts-table .contact-row {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 35px repeat(7, 1fr);
+    grid-auto-rows: auto;
+    min-height: 50px;
+    width: 95vw;
+    background-color: white;
+    border-bottom: 1px solid #c4c0c0;
+    border-radius: unset;
+    margin-left: -5px;
+    font-size: 14px;
+    font-weight: 400;
 }
 
-body .modal .btn {
+body main .contacts-container .contacts-table .contact-row:hover {
+    background-color: var(--row-selected-color);
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-edit {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    cursor: pointer;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-edit i {
+    font-size: 20px;
+    color: var(--main-btn-bg-color);
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-edit i:hover {
+    color: var(--main-btn-hover-bg-color);
+}
+
+body main .contacts-container .contacts-table .selected-row {
+    background-color: var(--row-selected-color);
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-checkbox {
+    align-self: center;
+    -ms-grid-row-align: center;
+    -ms-flex-item-align: center;
+    justify-self: center;
+    -ms-grid-column-align: center;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    cursor: default;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(2),
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(3) {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: unset;
+    -ms-flex-pack: unset;
+    justify-content: unset;
+    -ms-flex-item-align: center;
+    align-self: center;
+    margin: 0;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(2) p,
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(3) p {
+    margin: 0;
+    max-width: 175px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(2) small,
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(3) small {
+    max-width: 175px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--small-text-color);
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(3) small:nth-child(1) {
+    display: none;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(3):hover small {
+    -webkit-transform: none;
+    transform: none;
+    display: unset;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(6) {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info:nth-child(6) .channel {
+    padding: 1px 3px;
+    border-radius: 1px;
+    background-color: var(--channel-bg-color);
+    color: var(--channel-color);
+    margin: 2px;
+    cursor: pointer;
+    min-width: 5vw;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    text-align: center;
+    font-size: 10px;
+}
+
+body main .contacts-container .contacts-table .contact-row .contact-info .progress {
+    width: 120px;
+    height: 13.5px;
     border-radius: 2px;
-	min-width: 100px;
+    background-color: #D5D0D0;
 }
 
-body .modal form label {
-    font-weight: normal;
+body main .contacts-container .contacts-table .contact-row .contact-info .progress .progress-bar {
+    border-radius: 2px;
+}
+
+/* Contact Model */
+body main .contact-modal,
+body main .updateContactModal {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0vh 3vh;
+    border: solid 1px #111010;
+    border-radius: 2px;
+    background-color: white;
+    max-width: 95%;
+    height: auto;
+    margin-bottom: 15px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 11vh;
+    z-index: 10;
+}
+
+body main .contact-modal .title-close,
+body main .updateContactModal .title-close {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+body main .contact-modal .title-close h4,
+body main .updateContactModal .title-close h4 {
+    font-weight: 400;
+    color: #111010;
+    margin-left: 10px;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+body main .contact-modal .title-close .close-btn,
+body main .updateContactModal .title-close .close-btn {
+    font-size: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Contact modal form */
+body main .contact-modal .contact-form,
+body main .updateContactModal .contact-form {
+    width: 100%;
+}
+
+body main .contact-modal .contact-form .required-data,
+body main .updateContactModal .contact-form .required-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    width: 100%;
+    border: solid 1px var(--main-btn-bg-color);
+    border-radius: 2px;
+    padding-top: 7px;
+    background-color: var(--main-btn-bg-color);
+}
+
+body main .contact-modal .contact-form .required-data .form-group,
+body main .updateContactModal .contact-form .required-data .form-group {
+    width: 15vw;
+    font-weight: 400;
+    color: var(--white);
+}
+
+body main .contact-modal .contact-form .required-data .form-group .dropdown-toggle {
+    border: solid 2px var(--lightgray);
+    height: 38px;
+}
+
+body main .contact-modal .contact-form #btn-submit,
+body main .updateContactModal .contact-form #btn-submit {
+    color: white;
+    background-color: var(--main-btn-bg-color);
+    border: none;
+    font-weight: 400;
+    font-size: 18px;
+    position: relative;
+    width: 180px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+body main .contact-modal .contact-form #btn-submit:hover,
+body main .updateContactModal .contact-form #btn-submit:hover {
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+body main .contact-modal .contact-form .errors-container,
+body main .updateContactModal .contact-form .errors-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+body main .contact-modal .contact-form .errors-container small,
+body main .updateContactModal .contact-form .errors-container small {
+    color: red;
+    font-weight: 400;
+}
+
+/* Location data */
+body main .contact-modal .contact-form .location-data,
+body main .updateContactModal .contact-form .location-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 10px;
+}
+
+body main .contact-modal .contact-form .location-data .form-group,
+body main .updateContactModal .contact-form .location-data .form-group {
+    width: 15vw;
+    font-weight: 400;
+}
+
+body main .contact-modal .contact-form .location-data .form-group .form-control-range {
+    cursor: pointer;
+}
+
+
+/* Contact Channel */
+body main .contact-modal .contact-form .contact-channel-data,
+body main .updateContactModal .contact-form .contact-channel-data {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 10px;
+    gap: 30px;
+}
+
+body main .contact-modal .contact-form .contact-channel-data .form-group,
+body main .updateContactModal .contact-form .contact-channel-data .form-group {
+    width: 15vw;
+    font-weight: 400;
+}
+
+body main .contact-modal .contact-form .contact-channel-data .form-group .channel-label,
+body main .updateContactModal .contact-form .contact-channel-data .form-group .channel-label {
+    font-size: 13px;
+}
+
+/* Update/Delete modal */
+body main #updateModal .modal-header,
+body main #deleteModal .modal-header {
+    background-color: var(--main-btn-bg-color);
+    color: var(--white);
+}
+
+body main #updateModal .modal-footer .close-btn,
+body main #deleteModal .modal-footer .close-btn {
+    color: var(--white);
+    background-color: var(--main-btn-bg-color);
+    border: none;
+    font-weight: 500;
+    text-transform: none;
+}
+
+body main #updateModal .modal-footer .close-btn:hover,
+body main #deleteModal .modal-footer .close-btn:hover {
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+body main #updateModal .modal-footer .done-btn,
+body main #deleteModal .modal-footer .done-btn {
+    color: var(--white);
+    background-color: var(--main-btn-bg-color);
+    border: none;
+    font-weight: 500;
+    text-transform: none;
+}
+
+body main #updateModal .modal-footer .done-btn:hover,
+body main #deleteModal .modal-footer .done-btn:hover {
+    background-color: var(--main-btn-hover-bg-color);
+}
+
+@media screen and (max-width: 768px) {
+    .nav-container {
+        position: relative;
+    }
+    .nav-menu {
+        display: grid;
+        grid-template-columns: auto;
+        background: var(--signout-btn-bg-color);
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        top: 80px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    #navbar-logo {
+        margin-left: 20px;
+    }
+
+    .nav-menu.active {
+        background-color: var(--darkgray);
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .nav-links {
+        text-align: center;
+        line-height: 60px;
+        width: 100%;
+        display: table;
+    }
+    .nav-links:hover {
+        background-color: var(--signout-btn-bg-color);
+        color: var(--white);
+        transition: all 0.4s ease-out;
+    }
+    .navbar {
+        width: 100%;
+    }
+    .nav-links-btn {
+        border: none;
+        padding: 0;
+        border-radius: 0;
+        background-color: var(--darkgray);
+        color: var(--white);
+        transition: all 0.4s ease-out;
+    }
+    .nav-links-btn:hover {
+        background-color: var(--signout-btn-bg-color);
+    }
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+    .menu-toggle .bar{
+        display: block;
+    }
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 }
