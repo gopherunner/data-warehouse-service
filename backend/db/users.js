@@ -1,50 +1,62 @@
-const { User } = require('../models/users');
-const { Sequelize } = require('./connection');
+const User = require('../models/users');
 const bcrypt = require('bcrypt');
-
-const Op = Sequelize.Op;
+require('dotenv').config();
 
 async function getRegisteredUser(obj) {
     const { email } = obj;
 
+    console.log("[DEBUG] => Email: " + email);
+
+    // Search for all the users
+    let users = await User.find();
+
     if (email) {
-        let userFound = await User.findOne({
-            where: {
-                email: email,
-            },
-        });
-        return userFound;
+        const userByEmail = users.find(user => user.email === email);
+        if (userByEmail != undefined) {
+            return userByEmail;
+        }
     }
     return null;
 }
 
-async function getUsers() {
-    await User.findAll()
-        .then(user => {
-            return res.status(200).json({ users: user });
-        })
-        .catch(err => {
-            return res.status(404).json({ msg: 'ERROR While trying to get Customers from the API', error: err });
-        })
+async function getUsers(id) {
+    let users = await User.find({
+        _id: {
+            $ne: id
+        }
+    },
+    {
+        __v:0,
+        password:0,
+        date:0
+    });
+
+    return users;
 };
 
-async function getUser(email) {
-    const userFound = await User.findOne({
-        where: {
-            email: email
-        },
-        raw: true
-    });
-    return userFound;
+async function getUserByEmail(id) {
+    return await User.find( { email: id });
 }
+
+async function checkAdminUser(email) {
+    try {
+        const userProfile = await User.find( {email: email})
+        const profile = userProfile[0].profile;
+        console.log("[DEBUG] User Profile: " + profile);
+
+        if (profile == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) { 
+        console.log("[ERROR] While trying to find the email address");
+    }
+};
 
 async function checkUserEmailExists(email) {
     try {
-        let emailExists = await User.findOne({
-            where: {
-                email: email,
-            },
-        });
+        let emailExists = await User.findOne({ email });
         if (emailExists) {
             return true;
         } else {
@@ -55,33 +67,74 @@ async function checkUserEmailExists(email) {
     }  
 }
 
-async function createUser(obj) {
-    // Check if email is already registered
-    let userEmailExists = await checkUserEmailExists(obj.email);
-    if (userEmailExists) {
-        return false;
-    }
+async function createUser(usr) {
+    let users = await User.find();
+    console.log("[DEBUG] Users found: " + users.length);
+    const findByEmail = users.find(user => user.email === usr.email);
 
-    console.log("User email exists?: " + userEmailExists);
-    // Hash the User password
-    const salt = await bcrypt.genSalt(5);
-    obj.password = await bcrypt.hash(obj.password, salt);
+    if (findByEmail == undefined) {
+        if (usr.password) {
+            const salt = await bcrypt.genSalt(5);
+            usr.password = await bcrypt.hash(usr.password, salt);
 
-    const userCreated = await User.create(obj);
-    if (userCreated) {
-        return userCreated.user_id;
+            const newUser =  new User({
+                firstname: usr.name,
+                lastname: usr.lastname,
+                email: usr.email,
+                profile: usr.profile,
+                password: usr.password
+            });
+
+            try {
+                const userCreated = await newUser.save();
+                if (userCreated) {
+                    return userCreated;
+                } else {
+                    console.log("[ERROR] While trying to Store the new User");
+                }
+            } catch (error) {
+                console.log("[ERROR] While trying to store the new User, error msg: " + error.message);
+            }
+        }
     } else {
-        return false;
+        console.log("[ERROR] We found a user with that email address!");
     }
-}
+};
 
-async function updateUser(obj, id) {
-    const updatedUser = await User.update(obj, {
-        where: {
-            user_id: id,
-        },
-    });
-    return updatedUser[0];
-}
+async function updateUser(user, id) {
+    try {
+        let userToBeUpdated = {
+            firstname: user.name,
+            lastname: user.lastname,
+            email: user.email,
+            profile: user.profile
+        };
 
-module.exports = { createUser, getRegisteredUser, updateUser, getUsers, getUser, checkUserEmailExists };
+        console.table(userToBeUpdated);
+
+        let userUpdated = await User.findByIdAndUpdate(id, userToBeUpdated);
+        if (userUpdated) {
+            return userUpdated;
+        } else {
+            console.log("[ERROR] While trying to Update the User");
+        }
+    } catch (error) {
+        console.log("[ERROR] Cant find User with Id: " + id + ", error msg: " + error.message);
+    }
+};
+
+async function deleteUser(id) {
+    try {
+        let userDeleted = await User.findByIdAndDelete(id);
+        if (userDeleted) {
+            console.log("[INFO] User ID: " + id + "successfully deleted!");
+            return userDeleted;
+        } else {
+            console.log("[ERROR] While trying to Delete the User ID: " + id);
+        }
+    } catch (error) {
+        console.log("[ERROR] Cant find User with Id: " + id + ", error msg: " + error.message);
+    }
+};
+
+module.exports = { createUser, getRegisteredUser, updateUser, getUsers, getUserByEmail, checkUserEmailExists, checkAdminUser, deleteUser };
