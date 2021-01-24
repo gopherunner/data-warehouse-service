@@ -1,6 +1,6 @@
 # Marketing DataWarehouse Service
 
-This is the final project of the **Full Stack Developer** track course at Acamica (https://www.acamica.com). It's a service that allows a Marketing company to manage all the contacts of its clients for its campaigns.
+This is the final project of the **Full Stack Developer** track at Acamica (https://www.acamica.com). It's a service that allows a Marketing company to manage all the contacts of its clients for its campaigns.
 
 The project was coded with the following technologies:
 
@@ -45,7 +45,7 @@ The project was coded with the following technologies:
 2. Start the Backend REST API
 
     ```sh
-    cd data-warehouse/backend
+    cd data-warehouse-service/backend
     # npm start
     ```
     
@@ -67,3 +67,47 @@ The project was coded with the following technologies:
    email:       admin@datawarehouse.com
    password:    w4r3h0us3
    ```
+   
+## Some useful MongoDB commands (install & use) - for MacOS:
+
+- Install MongoDB Community edition:
+    ```sh
+    $ brew install mongodb-community
+    ```
+
+- List services:
+    ```sh
+    $ brew services list
+    ```
+
+- Start MongoDB service:
+    ```sh
+    $ brew services start mongodb-community
+    ```
+    
+- Run MongoDB command line:
+    ```sh
+    $ mongo
+    ```
+
+- Use specific database:
+    ```sh
+    > use mydb
+    switched to db mydb
+    ```
+
+- Show collections (tables in relational language):
+    ```sh
+    > show collections
+    cities
+    companies
+    contacts
+    countries
+    regions
+    users
+    ```
+
+- Show content of **users** collection:
+    ```sh
+    > db.users.find()
+    ```
