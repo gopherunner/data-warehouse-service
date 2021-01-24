@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 * {
     box-sizing: border-box;
@@ -8,8 +9,20 @@
     font-family: "Roboto Mono", monospace;
 }
 
+:root {
+    
+    --darkgray: #212329;
+    --brightred: #F9423D;
+    --white: #FFF;
+    --nav-bg-color: #0561BA;
+    --nav-bottom-bg-color: #5E94D1;
+    --login-btn-bg-color: #0561BA;
+    --login-btn-hover-bg-color: #5E94D1;
+    --signout-btn-bg-color: #5E94D1;
+    --bg-color: #E6F2FE;
+}
+
 body {
-    background: #76b852;
     background: -webkit-linear-gradient(right, #52b8a2, #6fa8c2);
     background: -moz-linear-gradient(right, #52b8a2, #6fa8c2);
     background: -o-linear-gradient(right, #52b8a2, #6fa8c2);
@@ -20,9 +33,9 @@ body {
 }
 
 body .navbar {
-    background: #111010;
+    background: var(--nav-bg-color);
     height: 10vh;
-    border-bottom: solid 6px #698ff7;
+    border-bottom: solid 6px var(--nav-bottom-bg-color);
 }
 
 body .navbar a {
@@ -31,6 +44,14 @@ body .navbar a {
     display: -ms-flexbox;
     color: white;
     font-size: 40px;
+}
+
+#navbar-logo {
+    color: var(--white);
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
 }
 
 body .login-container {
@@ -50,6 +71,45 @@ body .login-container .form-container {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+body .login-container .form-container .welcome-message {
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+body .login-container .form-container .input-form {
+    position: relative;
+    width: 90%;
+    margin: 15px auto;
+}
+
+body .login-container .form-container .input-form span {
+    position: absolute;
+    display: block;
+    color: darken(#EDEDED, 10%);
+    left: 10px;
+    top: 8px;
+    font-size: 20px;
+}
+
+body .login-container .form-container .input-form input {
+    width: 100%;
+    padding: 10px 5px 10px 40px;
+    display: block;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
+    transition: 0.2s ease-out;
+    color: darken(#EDEDED, 30%);
+}
+
+body .login-container .form-container .input-form input:focus {
+    padding: 10px 5px 10px 10px;
+    outline: 0;
+    border-color: #FF7052;
+}
+
+
+
 body .login-container .form-container input {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -66,7 +126,7 @@ body .login-container .form-container button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4CAF50;
+    background: var(--login-btn-bg-color);
     width: 100%;
     border: 0;
     padding: 15px;
@@ -80,7 +140,7 @@ body .login-container .form-container button {
 body .login-container .form-container button:hover,
 body .login-container .form-container button:active,
 body .login-container .form-container button:focus {
-    background: #43A047;
+    background: var(--login-btn-hover-bg-color);
 }
 
 body .login-container .form-container .message {
