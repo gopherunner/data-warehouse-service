@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
-const { getRegisteredUser, getUser } = require('../db/users');
+const { getRegisteredUser, checkAdminUser } = require('../db/users');
 
 const jwtSignature = process.env.APP_SECRET;
 
 async function validateUser(user) {
     const validatedUser = await getRegisteredUser(user);
+
     if (!validatedUser) {
         return [null];
     }
@@ -25,8 +26,11 @@ async function validateUser(user) {
     const userLogged = validatedUser.email;
     const token = jwt.sign({
        userLogged
-    }, jwtSignature, { expiresIn: "1h",});
-    return [ userLogged, token ];
+    }, jwtSignature, { expiresIn: "2h",});
+
+    const userProfile = validatedUser.profile;
+
+    return [ userLogged, token, userProfile ];
 };
 
 // Authenticate the Users token
@@ -51,7 +55,12 @@ function authenticateUser(req, res, next) {
 // Check that the user has admin privileges
 async function isAdmin(req, res, next) {
     const { userLogged } = req.user;
-    const { is_admin } = await getUser(userLogged);
+    // console.log("[DEBUG] User Logged: " + userLogged);
+
+    const { is_admin } = await checkAdminUser(userLogged);
+
+    // console.log("[DEBUG] Is User Admin?: " + is_admin);
+
     if (is_admin) {
         return next();
     } else {
