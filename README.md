@@ -64,7 +64,16 @@ The project was coded with the following technologies:
    email:       admin@datawarehouse.com
    password:    w4r3h0us3
    ```
-   
+
+### Using the Service
+
+1. First, you need to create at least one **Region/Country** and **City**, for that go to the Regions/City menu then create a Region, and for creating a Country and City you will need to click the three dots and follow the instructions.
+
+2. Create a Company, go the Companies menu and click on **Add Company**, complete the fields.
+
+3. Now, you can create **Contacts**.
+
+
 ## Some useful MongoDB commands (install & use) - for MacOS:
 
 - Install MongoDB Community edition:
