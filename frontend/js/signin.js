@@ -5,8 +5,7 @@ const notification = document.getElementById("notification");
 let loginHeaders = new Headers();
 loginHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-const APP_SERVER = "http://127.0.0.1:3000";
-const APP_CLIENT = "http://127.0.0.1:5500/project-data-warehouse/frontend";
+const APP_SERVER = "http://localhost:3000";
 
 signInBtn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -28,9 +27,14 @@ signInBtn.addEventListener("click", (event) => {
             if (response.status == 200 || response.status == 201) {
                 response.json().then((result) => {
                     let token = result.token;
+                    let profile = result.profile;
+
                     if (token !== undefined) {
                         console.log("[DEBUG] => Token: " + token);
-                        sessionStorage.setItem("token", token);
+                        sessionStorage.setItem("token", JSON.stringify(token));
+                        localStorage.setItem("token", JSON.stringify(token));
+                        sessionStorage.setItem("profile", JSON.stringify(profile));
+                        localStorage.setItem("profile", JSON.stringify(profile));
                         location.href = "home.html";
                     } else {
                         notification.innerHTML = "Email or password is not valid!";
