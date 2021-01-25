@@ -46,7 +46,7 @@ The project was coded with the following technologies:
 
     ```sh
     cd data-warehouse-service/backend
-    # npm start
+    npm start
     ```
     
     Check that the Backend REST API is working
@@ -56,12 +56,9 @@ The project was coded with the following technologies:
     [INFO] Starting Datawarehouse Mkt API Server, listening on port 3000
     ```
     
-3. Once the Backend service is running you could move forward and open the Warehouse Frontend App located at:
+3. Once the Backend service is running move forward and open the Warehouse Service on Visual Studio Code, then navigate to the **frontend** folder and start the **live server** and finally open the (index.html).
 
-   ```sh
-   data-warehouse-service/frontend/index.html
-   ```
-   The system is preloaded with (1) Admin user, with the following credentials:
+   The system is preloaded with (1) **admin** user, with the following credentials:
    
    ```sh
    email:       admin@datawarehouse.com
@@ -111,3 +108,9 @@ The project was coded with the following technologies:
     ```sh
     > db.users.find()
     ```
+
+- Delete database:
+    ```sh
+    > db.dropDatabase()
+    ```
+
